@@ -71,7 +71,7 @@ void _showFastMenu(BuildContext context) {
             color: Colors.white,
             borderRadius: BorderRadius.circular(12),
           ),
-          child: Icon(icon, color: Colors.white, size: 28),
+          child: Icon(icon, color: const Color(0xFF00529C), size: 28),
         ),
         const SizedBox(height: 8),
         Text(label, textAlign: TextAlign.center, style: const TextStyle(color: Colors.white, fontSize: 11),),
@@ -119,7 +119,111 @@ void _showFastMenu(BuildContext context) {
                   ),
                 ),  
               ],
-            )
+            ),
+
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 30.0, vertical: 30),
+              child: Column(
+                children: [
+                  TextField(
+                    decoration: InputDecoration(
+                      prefixIcon: const Icon(Icons.person_outline, color: Colors.grey), 
+                      hintText: 'Username',
+                      filled: true,
+                      fillColor: Colors.white,
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(12),
+                        borderSide: BorderSide(color: Colors.grey.shade300),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 15),
+                  TextField(
+                    obscureText: true,
+                    decoration: InputDecoration(
+                      prefixIcon: const Icon(Icons.lock_outline, color: Colors.grey), 
+                      suffixIcon: const Icon(Icons.visibility_off, color: Colors.grey),
+                      hintText: 'Password',
+                      filled: true,
+                      fillColor: Colors.white,
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(12),
+                        borderSide: BorderSide(color: Colors.grey.shade300),
+                      ),
+                    ),
+                  ),
+                  Align(
+                    alignment: Alignment.centerRight,
+                    child: TextButton(
+                      onPressed: () {},
+                      child: const Text(
+                        'Lupa Username/Password?', 
+                        style: TextStyle(color: Color(0xFF00529C), fontSize: 12),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  SizedBox(
+                    width: double.infinity,
+                    height: 50,
+                    child: ElevatedButton(
+                      onPressed: () {},
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color(0xFF00529C),
+                        shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12)),
+                        elevation: 0,
+                      ),
+                      child: const Text(
+                        'Login', 
+                        style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 16)
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 25),
+                  Row(
+                    children: [
+                      const Expanded(child: Divider()),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 10),
+                        child: Text(
+                          'Atau masuk menggunakan',
+                          style: TextStyle(color: Colors.grey.shade500, fontSize: 12),
+                        ),
+                      ),
+                      const Expanded(child: Divider()),
+                    ],
+                  ),
+                  const SizedBox(height: 25),
+                  const Icon( Icons.fingerprint, size: 70, color: Color(0xFF00529C)),
+                ],
+              ),
+            ),
+
+            GestureDetector(
+              onTap: () => _showFastMenu(context),
+              onVerticalDragEnd: (details) {
+                if (details.primaryVelocity ! < 0) _showFastMenu(context);
+              },
+              child: Container(
+                width: double.infinity,
+                padding: const EdgeInsets.only(top: 15, bottom: 30),
+                decoration: const BoxDecoration(
+                  color: Color(0xFF00529C),
+                  borderRadius: BorderRadius.vertical(top: Radius.circular(30)),
+                ),
+                child: Column(
+                  children: [
+                    const Icon(Icons.keyboard_arrow_up, color: Colors.white),
+                    const SizedBox(height: 5),
+                    const Text(
+                      'Fast Menu',
+                      style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+                    ),
+                  ],
+                ),
+              ),
+            ) 
           ],
         ),
       ),
